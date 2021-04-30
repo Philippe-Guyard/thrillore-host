@@ -1,15 +1,24 @@
 {
-  "name": "thrillore-host",
+  "name": "thrillore",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-start": "nodemon app.js",
+    "server-start": "rm logs/* && pm2 start ecosystem.config.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "lore"
+  ],
+  "author": "Philippe Guyard",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.6",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2"
   }
 }
