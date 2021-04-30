@@ -1,6 +1,6 @@
 module.exports = {
   apps : [{
-    name: 'bx+thrillore',
+    name: 'thrillore',
     script: 'app.js',
     out_file: 'logs/out.log',
     err_fille: 'logs/err.log',
