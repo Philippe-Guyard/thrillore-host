@@ -27,7 +27,7 @@ app.get('/api/leaderboard', async (req, res, next) => {
         const {users, total} = await userService.getUsers(USERS_PER_PAGE, USERS_PER_PAGE * (page - 1));
 
         let points = users.map(user => {
-            return {login: user.login, points: user.thrillorePts || 0}
+            return {handle: user.name + ' ' + user.surname, points: user.thrillorePts || 0}
         });
 
         points = points.sort((a, b) => a.points < b.points);

@@ -14,7 +14,7 @@ $(document).ready(() => {
         for(let row of data.points) {
             const newRow = rowTemplateStr
                         .replace('{{RANK}}', row.rank)
-                        .replace('{{HANDLE}}', row.login)
+                        .replace('{{HANDLE}}', row.handle)
                         .replace('{{POINTS}}', row.points);
             
             $('#leaderboard tbody').append(newRow);
