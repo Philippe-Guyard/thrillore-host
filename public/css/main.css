@@ -695,10 +695,9 @@ a.back-to-top:hover, a.back-to-top:focus {
     width: 100%; }
   .navbar-brand {
     position: absolute;
-    padding: 15px 15px;
     top: 0; }
   .navbar-brand img {
-    width: 75%; }
+    width: 10%; }
   #mobile-menu {
     display: none; }
   .slicknav_menu {
