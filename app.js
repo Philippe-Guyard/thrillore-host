@@ -20,26 +20,19 @@ app.get('/api/hello', (req, res) => {
     res.sendStatus(200);
 });
 
-app.get('/api/leaderboard', async (req, res, next) => {
-    const USERS_PER_PAGE = 50;
-    const page = req.query.page || 1;
-    try {
-        const {users, total} = await userService.getUsers(USERS_PER_PAGE, USERS_PER_PAGE * (page - 1));
+app.get('/api/leaderboard', async (req, res, next) => {    try {
+        const {users} = await userService.getUsers();
 
         let points = users.map(user => {
-            return {handle: user.name + ' ' + user.surname, points: user.thrillorePts || 0}
+            return {handle: user.login, points: Number.parseInt(user.thrillorePts) || 0}
         });
 
-        points = points.sort((a, b) => a.points < b.points);
+        points.sort((a, b) => (a.points < b.points ? 1 : -1))
         points = points.map((x, idx) => {
             return {...x, rank: idx + 1}
         });
 
-        let lastPage = Math.floor(total / USERS_PER_PAGE) + 1;
-        if (total % USERS_PER_PAGE == 0)
-            lastPage -= 1;
-
-        return res.json({points: points, count: points.length, lastPage: lastPage});
+        return res.json({points: points, count: points.length});
     }
     catch (err) {
         return next(err);
