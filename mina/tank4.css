@@ -1,0 +1,176 @@
+.header {
+    color: #fff;
+    background: rgb(26, 22, 22);
+    max-height: 100px;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    padding: 0px;
+    margin:0px;
+}
+
+@media only screen and (max-width: 600px) {
+    .text {margin-left: 10px !important;}
+}
+
+@media only screen and (max-width: 925px) {
+    .text {margin-left: 10px !important;}
+}
+
+@media only screen and (max-width: 550px) {
+    .text {max-width: None !important;}
+	.sticker{
+		width: 100% !important;
+		max-width: None !important;
+		}
+	.structure{height: auto !important;}
+	.sticker img{
+		max-width: None !important;
+		max-height: None !important;
+
+		display: block !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+		width: 50% !important;
+	}
+	.navigation a{
+		margin-left: auto !important;
+		}
+	
+}
+
+.header p {
+    padding: 5px;
+}
+
+body {
+    background: rgb(180, 179, 179);
+}
+
+hr {
+    border: 1px solid rgb(119, 119, 119);
+}
+
+.sticker, .text {
+    display: inline-block;
+}
+
+.sticker {
+    max-width: 250px;
+}
+
+.structure{
+	height: 15em;
+}
+.text {
+    max-width: 50%;
+    margin-left: 200px;
+}
+
+.sticker img {
+    display: block;
+    max-width: 50%;
+    max-height: 200px;
+    margin-left: 100px;
+}
+
+#gift{
+    padding-bottom: 150px;
+}
+ul {
+    list-style: none;
+  }
+  
+
+
+.heading {
+    list-style-type: None;
+}
+
+.one{
+    /*margin-left: 210px;*/
+}
+
+.animated-button1{
+	margin: auto;
+}
+
+.navigation-social {
+    background-color: black;
+    color: white;
+    display: block;
+    width: 100%;
+    max-height: 150px;
+}
+
+
+.grid-container{
+	display: inline-block; /*container koji drzi ceo grid, da bi mogla da uradis inline block*/
+}
+
+.arrows-container{ /*container koji drzi sve strelice, da bi mogla da ih pomeras zajedno kao jedan blok i da bi mogla da uradis inline-block*/
+	display: inline-block;
+	height: 126px;
+	position: relative;
+}
+
+.arrows{ /*flex container - flex je kul napredna stvar koja olaksava mnogo alignovanje elemenata, 
+kazes flex na parentu u ovom slucaju je to .arrows i onda definises kako cemu se child alignovati - 
+to radis sa justify-content i align center, sad su strelice vertikalno alignovane u sredinu. U htmlu ces videti da postoji flex-align klasa, 
+nju sam napravio da bih mogao sve strelice odjednom da alignujem kao jedan blok u sredinu*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 126px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    max-width: 300px;
+	/*margin-bottom: 80px; dodaj po potrebi ovo je tvoje od ranije*/
+}
+
+.cell {   
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 10px;
+    text-align: center;
+}
+
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+  
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+  
+@media only screen and (max-width: 450px) {
+	ul{padding-left: 10px;}
+	.arrows-container{display: none;}
+}
+
+.rotate-tank{
+	transform: rotate(-90deg);
+}
+.cell-tank{
+	padding: 0px;
+	background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    font-size: 10px;
+    text-align: center;
+}
+
+
+.cell-tank img {
+	display: absolute;
+	width: 40px;
+	height: 40px;   
+}

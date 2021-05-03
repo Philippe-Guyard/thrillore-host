@@ -1,0 +1,98 @@
+.header {
+    color: #fff;
+    background: rgb(26, 22, 22);
+    max-height: 100px;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    padding: 0px;
+    margin:0px;
+}
+
+@media only screen and (max-width: 600px) {
+    .text {margin-left: 10px !important;}
+}
+
+@media only screen and (max-width: 925px) {
+    .text {margin-left: 10px !important;}
+}
+
+@media only screen and (max-width: 550px) {
+    .text {max-width: None !important;}
+	.sticker{
+		width: 100% !important;
+		max-width: None !important;
+		}
+	.structure{height: auto !important;}
+	.sticker img{
+		max-width: None !important;
+		max-height: None !important;
+
+		display: block !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+		width: 50% !important;
+	}
+	.navigation a{
+		margin-left: auto !important;
+		}
+	#gift{padding-bottom: 0px !important;}
+}
+.header p {
+    padding: 5px;
+}
+
+body {
+    background: rgb(180, 179, 179);
+}
+
+hr {
+    border: 1px solid rgb(119, 119, 119);
+}
+.sticker, .text {
+    display: inline-block;
+}
+
+.sticker {
+    max-width: 250px;
+}
+
+.text {
+    max-width: 50%;
+    margin-left: 200px;
+}
+
+img {
+    display: block;
+    max-width: 200px;
+    max-height: 200px;
+    margin-left: 100px;
+}
+
+#gift{
+    padding-bottom: 150px;
+}
+ul {
+    list-style: none;
+  }
+  
+  ul li:before {
+    content: '✓';
+  }
+
+.heading {
+    list-style-type: None;
+}
+
+.one{
+    margin-left: 210px;
+}
+
+
+.navigation-social {
+    background-color: black;
+    color: white;
+    display: block;
+    width: 100%;
+    max-height: 200px;
+}
