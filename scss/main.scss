@@ -1,5 +1,12 @@
 $main: #A846C3;
 
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
 @import url("https://fonts.googleapis.com/css?family=Lato:400|Josefin+Sans:700");
 html {
   overflow-x: hidden;
