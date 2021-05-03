@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="css/tanks.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.js"></script> -->
+    <script src="js/tanks.js"></script>
+</head>
+
+<body>
+    <!-- main  -->
+    <main class="wrapper">
+        <!-- intro -->
+        <div class="intro clearfix">
+            <h1 class="intro_title"> Thrill'Ore Tank Game </h1>
+        </div>
+        <!-- /end intro -->
+        <!-- guide     -->
+        <section class="guide clearfix">
+            <h2> How do I play? </h2>
+            <p> Design a simple AI for your tank and see it compete against other players </p>
+            <p> To win, be the last one standing.</p>
+        </section>
+        <!-- /end guide  -->
+        <!-- gameboard -->
+        <div id="touchGameboard" class="gameboard">
+            <div class="grid">
+            </div>
+            <div class="tile-container">
+            </div>
+        </div>
+        <!-- /end gameboard -->
+    </main>
+    <!-- /end main  -->
+
+    <!-- templates -->
+    <script type="text/html" id="template_grid_cell">
+        <canvas class="grid_cell" id="{CELL_ID}"></canvas>
+    </script>
+    <!-- /end templates -->
+</body>
