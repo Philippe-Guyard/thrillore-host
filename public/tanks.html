@@ -8,8 +8,13 @@
 </head>
 
 <body>
+    <div class="overlay">
+        <img class="title full-img" src="img/tanks/game_over.png">
+        <img class="background full-img" src="img/tanks/background.jpg">
+    </div>
+
     <div class="column-1">
-        <table>
+        <table id="leaderboard">
             <tr>
                 <th>Alive players</th>
             </tr>
@@ -50,5 +55,15 @@
     <script type="text/html" id="template_grid_cell">
         <canvas class="grid_cell" id="{CELL_ID}"></canvas>
     </script>
-    <!-- /end templates -->
+    <script type="text/html" id="template_player_line">
+        <tr>
+            <td>{HANDLE}</td>
+        </tr>
+    </script>
+    <script type="text/html" id="table_head">
+        <tr>
+            <th>Alive players</th>
+        </tr>
+    </script>
+    <!-- templates -->
 </body>

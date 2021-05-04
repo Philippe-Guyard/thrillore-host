@@ -77,6 +77,7 @@ class Game:
             Game.SHOOT_RIGHT: lambda player: self._shoot(player, Game.SHOOT_RIGHT),
             Game.SHOOT_DOWN: lambda player: self._shoot(player, Game.SHOOT_DOWN),
             Game.SHOOT_LEFT: lambda player: self._shoot(player, Game.SHOOT_LEFT),
+            Game.STAND_STILL: lambda player: None #do nothing
         }
 
         self.state_history = []

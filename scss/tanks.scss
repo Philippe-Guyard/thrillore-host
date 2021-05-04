@@ -19,11 +19,40 @@ $color-list: #00d0a4, #dd7373, #7d53de, #6622cc, #00bfb2, #c06ff2, #340068, #3e9
   box-sizing: border-box;
 }
 
+.full-img {
+  width: 100%;
+  height: auto;
+  position: fixed;
+  display: block;
+}
+
+.overlay {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+
+  .background {
+    z-index: 9;
+    opacity: 0.4;
+  }
+
+  .title {
+    z-index: 10;
+    top: -60%;
+  }
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
 .column-1 {
   width: 20%;
   position: absolute;
   left: 0;
-  top: 70%;
+  top: 40%;
   padding: 5%;
 
   font-size: 1rem;

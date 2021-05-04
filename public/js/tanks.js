@@ -1,14 +1,3 @@
-/**
- * TODO:
- * - Style win/lose, move out of "alert"
- * - Add in previous high score via localstorage
- * - Update footer
- */
-
-/*
-* Dependencies:
-* Lodash, jQuery, hammerjs
-*/
 const GRID_SIDE = 8;
 const DIRECTION_UP = 0;
 const DIRECTION_DOWN = 1;
@@ -40,15 +29,15 @@ $(document).ready(async function () {
 
     fillGrid();
 
-    const gameManager = new GameManager(data.grid_history, data.player_count, data.die_history, data.shoot_history);
+    const gameManager = new GameManager(data.grid_history, data.player_count, data.die_history, data.shoot_history, data.alive_history);
     //WAit for pictures to load
     setTimeout(() => {
         setInterval(() => gameManager.loopOnce(), 60);
-    }, 1000);
+    }, 2000);
 });
 
 class GameManager {
-    constructor(gridHistory, playerCount, dieHistory, shootHistory) {
+    constructor(gridHistory, playerCount, dieHistory, shootHistory, aliveHistory) {
         this.blueTankImage = new Image();
         this.blueTankImage.src = 'data/bluetank.png';
         this.blueTankImage.onload = () => {
@@ -66,12 +55,17 @@ class GameManager {
         this.gridHistory = gridHistory;
         this.dieHistory = dieHistory;
         this.shootHistory = shootHistory;
+        this.aliveHistory = aliveHistory;
 
         this.players = [];
         for(let i = 0; i < playerCount; i++)
             this.players.push({id: -1, direction: DIRECTION_UP, dead: false, explosionFrame: 0, waitFrames: 0});
 
         this.gameFinished = false;
+
+        this.tableHeadStr = $('#table_head').html();
+        this.tableRowTemplateStr = $('#template_player_line').html();
+        this.gameOverDrawn = false;
     }
 
     _getCtxFromID(cellID) {
@@ -155,12 +149,28 @@ class GameManager {
         return allDead;
     }
 
+    _updateLeaderboard() {
+        const alivePlayers = this.aliveHistory[this.turn];
+        let newHtml = this.tableHeadStr + '\n';
+        for (let player of alivePlayers) {
+            newHtml += this.tableRowTemplateStr.replace('{HANDLE}', player);
+        }
+        $('#leaderboard').html(newHtml);
+    }
+
+    _gameOverScreen() {
+        $('.overlay').fadeIn(1000);
+        this.gameOverDrawn = true;
+    }
+
     loopOnce() {
         if (this.gameFinished) {
             const allDead = this._drawDeadPlayers();
-            if (allDead) {
+            if (allDead && !this.gameOverDrawn) {
                 for (let id = 1; id <= GRID_SIDE * GRID_SIDE; id++)
                     this._clearCell(id);
+                
+                this._gameOverScreen();
             }
             return
         }
@@ -209,6 +219,9 @@ class GameManager {
                         this._drawLaser(curID);
                 }
             }
+
+            this._updateLeaderboard();
+
             this.turn++;
             this.gameFinished = this.turn == this.gridHistory.length;
         }

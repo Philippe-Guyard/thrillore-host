@@ -33,6 +33,7 @@ d = {
     'turns': game.turn,
     'die_history': game.die_history,
     'shoot_history': game.shoot_history,
+    'alive_history': game.alive_history,
     'player_count': len(functions)
 }
 
