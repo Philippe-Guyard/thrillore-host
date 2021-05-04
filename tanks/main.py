@@ -22,7 +22,7 @@ for filename in os.listdir(DIR):
 
     full_path = DIR + '.' + filename
     module = dynamic_import(full_path[:-3])
-    functions.append(module.play_turn)
+    functions.append((module.play_turn, filename[:-3]))
 
 game = Game(functions)
 for _ in range(100):

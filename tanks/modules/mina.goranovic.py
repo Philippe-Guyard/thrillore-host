@@ -1,4 +1,4 @@
-#This is an example of a script that will shoot up every turn
+#This is an example of a script that will move in a circle
 from random import randint
 
 MOVE_UP = 0
@@ -10,6 +10,9 @@ SHOOT_RIGHT = 5
 SHOOT_DOWN = 6
 SHOOT_LEFT = 7
 STAND_STILL = 8
+
+#We save this variable outside of the function
+memory = 0
 
 def play_turn(grid, player_pos):
     '''
@@ -25,5 +28,13 @@ def play_turn(grid, player_pos):
         -An integer 0 <= x <= 8, thath represents the 'code' of the action to make
         For example, x = 0 is equivalent to moving up (see constants above)
     '''
-    return SHOOT_UP
-    
+    global memory #tell python we will use the global variable 'memory'
+    old_memory = memory #save the old value of memory
+
+    #update our current memory
+    memory = memory + 1 #go to the next action
+    memory = memory % 4 #make sure we never overflow past 4 
+    #NOTE: This script will make it's tank move in the order
+    #UP - RIGHT - DOWN - LEFT
+
+    return old_memory #return our saved version

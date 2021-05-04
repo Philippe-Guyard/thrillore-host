@@ -7,6 +7,27 @@
 *:after {
   box-sizing: border-box; }
 
+.column-1 {
+  width: 20%;
+  position: absolute;
+  left: 0;
+  top: 70%;
+  padding: 5%;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529; }
+  .column-1 table {
+    border-spacing: 1;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    margin: auto;
+    position: relative;
+    text-align: center; }
+
 button:hover,
 a:hover {
   cursor: pointer; }
@@ -40,7 +61,8 @@ h2 {
   .intro_title {
     text-align: center;
     color: #f9d49a;
-    font-size: 3rem; }
+    font-size: 3rem;
+    line-height: 1.1rem; }
 
 /**/
 /* Guide instructions */

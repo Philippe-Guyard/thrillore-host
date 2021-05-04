@@ -25,10 +25,11 @@ class Tile:
 
 
 class Player:
-    def __init__(self, action_func, position, initial_index):
+    def __init__(self, action_func, position, initial_index, label):
         self.play_turn = action_func
         self.position = position
         self.initial_index = initial_index
+        self.label = label
 
     def __str__(self):
         return 'P' + str(self.initial_index + 1)
@@ -56,13 +57,14 @@ class Game:
                      for _ in range(Game.GRID_SIDE)]
 
         self.players = []
-        for action_func in actions_funcs:
+        for action_func, label in actions_funcs:
             position = (Game.get_random_coord(), Game.get_random_coord())
             while self.at(position).state == 1:
                 position = (Game.get_random_coord(), Game.get_random_coord())
 
-            self.players.append(
-                Player(action_func, position, len(self.players)))
+            new_player = Player(action_func, position, len(self.players), label)
+            self.players.append(new_player)
+            
             self.at(position).set_state(Tile.TANK, 0, self.players[-1])
 
         # Maps action code -> function that accepts player
@@ -80,6 +82,7 @@ class Game:
         self.state_history = []
         self.die_history = []
         self.shoot_history = []
+        self.alive_history = []
 
         self.game_ended = False
         self.turn = 0
@@ -164,6 +167,7 @@ class Game:
                                   for row in state_grid])
         self.die_history.append(die_results)
         self.shoot_history.append(shoot_results)
+        self.alive_history.append([p.label for p in self.players])
 
-        self.game_ended = len(self.players) <= 1
+        self.game_ended = len(self.players) <= 1 or self.turn > 100
         self.turn += 1
