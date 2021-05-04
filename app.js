@@ -6,7 +6,9 @@ require('dotenv').config({path: path.join(__dirname, '.env')});
 const fs = require('fs');
 
 const rawdata = fs.readFileSync('points.json');
-const filePoints = JSON.parse(rawdata);
+const filePoints = JSON.parse(rawdata).map(x => {
+    return {handle: x.handle, points: Number.parseInt(x.points)}
+});
 
 const constants = require('./constants.js');
 
@@ -32,15 +34,14 @@ app.get('/api/leaderboard', async (req, res, next) => {    try {
             return {handle: user.login, points: Number.parseInt(user.thrillorePts) || 0}
         });
         for (let obj of filePoints) {
-            obj.points = Number.parseInt(obj.points);
             const old = points.find(x => x.handle == obj.handle);
             if (old)
                 old.points += obj.points;
             else
-                points.push(obj);
+                points.push({...obj});
         }
 
-        points.sort((a, b) => (a.points < b.points ? 1 : -1))
+        points.sort((a, b) => (a.points < b.points ? 1 : -1));
         points = points.map((x, idx) => {
             return {...x, rank: idx + 1}
         }).slice(0, 25);
