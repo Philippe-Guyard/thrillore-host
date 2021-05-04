@@ -12,8 +12,8 @@ SHOOT_LEFT = 7
 STAND_STILL = 8
 
 def play_turn(grid, player_pos):
-    '''
-    Determines the action to make by your player on th next turn
+    ''''    
+    Determines the action your player will make on the next turn
     Inputs:
         -player_pos: a tuple (i, j) with the coordinates of your player
         -grid: the state of the board for the previous turn. We have:

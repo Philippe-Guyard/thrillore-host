@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/tanks-desc.css">
 	<link rel="stylesheet" type="text/css" href="css/button.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
 </head>
 
 <body>
@@ -12,9 +15,16 @@
 <div class="participate">
     <div class="sticker"> <img src="img/overview.png"></div>
     <div class="text">
-        <div class="wrapper"><h2>Overview</h2><p>We have a 10x10 grid with cells. The game is turn based. Every turn, each tank can perform one of the following actions: <br>
-            Move/shoot up/right/down/ left <br>
-            Moving = changing the current position of the tank (a tank can only move to a neighboring cell) Shooting = covering a portion of a row/column with a deadly laser, that kills every tank it touches </p>
+        <div class="wrapper">
+            <h2>Overview</h2>
+            <p>
+                Contest participants have to write a script that will fight in a multiplayer 2D platformer. The "game" consists of tanks placed on
+                an 8x8 grid. It is turn based, and every turn, each tank can perform one of the following actions. <br>
+                Move in any direction (up, right, down, left) <br>
+                Shoot in any direction (up, right, down, left) <br>
+                Moving means changing the current position of the tank (a tank can only move to a neighboring cell) <br>
+                Shooting means covering a portion of a row/column with a deadly laser, that kills every tank it touches 
+            </p>
         </div>
     </div>
 </div>
@@ -88,8 +98,8 @@
             <div class="grid-container">
                 <div class="grid">
                     <div class="cell-tank"><img class= "rotate-tank" src="img/tank.jpeg"></div>
-                    <div class="cell-tank"><img src="img/explosion.png"></div>
-                    <div class="cell-tank"><img src="img/explosion.png"></div>
+                    <div class="cell-tank" style="background-color: red;"></div>
+                    <div class="cell-tank" style="background-color: red;"></div>
                     <div class="cell"></div>
                     <div class="cell"></div>
                     <div class="cell"></div>
@@ -112,17 +122,23 @@
 <div class="gain">
     <div class="sticker structure"><img src="img/structure.png"></div>
     <div class="text">
-        <h2>Structure of the script</h2>
-        <p id=function><mark>def play_turn(grid): <br>
-            do_something() <br>
-            return action_code <br></mark></p>
+        <h2>Structure of the script:</h2>
+        <p id=function>
+            All scripts should be written in python and contain the following function:
+            <pre><code class="lang-python">
+            def play_turn(grid, player_pos): <br>
+                do_something() <br>
+                return action_code <br>
+            </code></pre> 
+        </p>
         <p>Where grid is a 2D array of integers (the state of the board after the previous turn ended and:</p>
         <ul>
             <li><mark>grid[i][j] = 0 if the cell (i, j) is empty</mark></li>
             <li><mark>grid[i][j] = 1 if the cell (i, j) has a tank</mark></li>
             <li><mark>grid[i][j] = 2 if the cell (i,j) has a laser</mark></li>
         </ul>
-        <p>And action_code is an integer representing the action to perform on the next turn. For example, 0 = Move up, 5 = Shoot right, etc</p>
+        <p>And <mark>action_code</mark> is an integer representing the action to perform on the next turn. For example, 0 = Move up, 5 = Shoot right, etc</p>
+        <p>You can look at author's examples of basic scripts to get some inspiration:</p>
     </div>
 </div>
 <hr>
@@ -150,6 +166,7 @@
                 <p>Go back</p>
             </div> -->
         </div>
+        <script>hljs.highlightAll();</script>
 </body>
 
 </html>
