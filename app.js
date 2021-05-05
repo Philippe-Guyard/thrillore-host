@@ -30,23 +30,25 @@ app.get('/api/hello', (req, res) => {
 app.get('/api/leaderboard', async (req, res, next) => {    try {
         const {users} = await userService.getUsers();
 
-        let points = users.map(user => {
-            return {handle: user.login, points: Number.parseInt(user.thrillorePts) || 0}
+        let dailyPoints = users.map(user => {
+            return {handle: user.login, points: Number.parseInt(user.dailyPts) || 0}
         });
-        for (let obj of filePoints) {
-            const old = points.find(x => x.handle == obj.handle);
-            if (old)
-                old.points += obj.points;
-            else
-                points.push({...obj});
-        }
-
-        points.sort((a, b) => (a.points < b.points ? 1 : -1));
-        points = points.map((x, idx) => {
+        dailyPoints.sort((a, b) => (a.points < b.points ? 1 : -1));
+        dailyPoints = dailyPoints.map((x, idx) => {
             return {...x, rank: idx + 1}
         }).slice(0, 25);
 
-        return res.json({points: points, count: points.length});
+
+        let weeklyPoints = users.map(user => {
+            return {handle: user.login, points: Number.parseInt(user.thrillorePts) || 0}
+        });
+
+        weeklyPoints.sort((a, b) => (a.points < b.points ? 1 : -1));
+        weeklyPoints = weeklyPoints.map((x, idx) => {
+            return {...x, rank: idx + 1}
+        }).slice(0, 25);
+
+        return res.json({weeklyPoints: weeklyPoints, dailyPoints: dailyPoints, count: 25});
     }
     catch (err) {
         return next(err);

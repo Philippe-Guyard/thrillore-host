@@ -1,1 +1,130 @@
-[{"handle": "meryem.bennani", "points": 20}, {"handle": "bryan.nanga", "points": 80}, {"handle": "hasti.honari", "points": 20}, {"handle": "paloma.thevenet", "points": 20}, {"handle": "christian.roubert", "points": 70}, {"handle": "gautier.alassaire", "points": 270}, {"handle": "pedro.cabral", "points": 20}, {"handle": "elena.mrdja", "points": 40}, {"handle": "doan-dai.nguyen", "points": 40}, {"handle": "lazar.milikic", "points": 220}, {"handle": "ionas.zissis", "points": 215}, {"handle": "harshit.shangari", "points": 140}, {"handle": "bogdan.raonic", "points": 70}, {"handle": "eliott.sarrey", "points": 50}, {"handle": "steven.van-heiningen", "points": 50}, {"handle": "virgile.martin", "points": 100}, {"handle": "lorentz.dutrievoz", "points": 80}, {"handle": "alexandra-catalina.negoita", "points": 20}, {"handle": "dain.jung", "points": 20}, {"handle": "evdokia.gneusheva", "points": 70}, {"handle": "hasti.honari", "points": 20}, {"handle": "jason.oyugi", "points": 40}, {"handle": "jean.tieleman", "points": 110}, {"handle": "nazila.sharifi-amina", "points": 20}, {"handle": "ines.saih", "points": 20}, {"handle": "ghadi.nheme", "points": 20}, {"handle": "nazila.sharif-amina", "points": 50}, {"handle": "ines.zaragoza", "points": 70}, {"handle": "valentin.rudondy", "points": 90}, {"handle": "mathieu.melennec", "points": 90}, {"handle": "filip.miljevic", "points": 50}, {"handle": "zarko.bulic", "points": 50}, {"handle": "lucia.carai", "points": 20}]
+[
+    {
+        "handle": "meryem.bennani",
+        "points": 20
+    },
+    {
+        "handle": "bryan.nanga",
+        "points": 80
+    },
+    {
+        "handle": "hasti.honari",
+        "points": 20
+    },
+    {
+        "handle": "paloma.thevenet",
+        "points": 20
+    },
+    {
+        "handle": "christian.roubert",
+        "points": 70
+    },
+    {
+        "handle": "pedro.cabral",
+        "points": 20
+    },
+    {
+        "handle": "elena.mrdja",
+        "points": 40
+    },
+    {
+        "handle": "doan-dai.nguyen",
+        "points": 40
+    },
+    {
+        "handle": "lazar.milikic",
+        "points": 220
+    },
+    {
+        "handle": "ionas.zissis",
+        "points": 215
+    },
+    {
+        "handle": "harshit.shangari",
+        "points": 140
+    },
+    {
+        "handle": "bogdan.raonic",
+        "points": 70
+    },
+    {
+        "handle": "eliott.sarrey",
+        "points": 50
+    },
+    {
+        "handle": "steven.van-heiningen",
+        "points": 50
+    },
+    {
+        "handle": "virgile.martin",
+        "points": 100
+    },
+    {
+        "handle": "lorentz.dutrievoz",
+        "points": 80
+    },
+    {
+        "handle": "alexandra-catalina.negoita",
+        "points": 20
+    },
+    {
+        "handle": "dain.jung",
+        "points": 20
+    },
+    {
+        "handle": "evdokia.gneusheva",
+        "points": 70
+    },
+    {
+        "handle": "hasti.honari",
+        "points": 20
+    },
+    {
+        "handle": "jason.oyugi",
+        "points": 40
+    },
+    {
+        "handle": "jean.tieleman",
+        "points": 110
+    },
+    {
+        "handle": "nazila.sharifi-amina",
+        "points": 20
+    },
+    {
+        "handle": "ines.saih",
+        "points": 20
+    },
+    {
+        "handle": "ghadi.nheme",
+        "points": 20
+    },
+    {
+        "handle": "nazila.sharif-amina",
+        "points": 50
+    },
+    {
+        "handle": "ines.zaragoza",
+        "points": 70
+    },
+    {
+        "handle": "valentin.rudondy",
+        "points": 90
+    },
+    {
+        "handle": "mathieu.melennec",
+        "points": 90
+    },
+    {
+        "handle": "filip.miljevic",
+        "points": 50
+    },
+    {
+        "handle": "zarko.bulic",
+        "points": 50
+    },
+    {
+        "handle": "lucia.carai",
+        "points": 20
+    }
+]

@@ -6,18 +6,23 @@ $(document).ready(() => {
         $(this).stop(true, true).animate({'opacity': '100%'}, 500);
     });
 
-    $.getJSON('/api/leaderboard')
-    .then(data => {
+    const fillTable = (tBody, data) => {
         const rowTemplateStr = $('#leaderboard #row-template').html();
-        //Remove previous html
-        $('#leaderboard tbody').html('');
-        for(let row of data.points) {
+        tBody.html('');
+
+        for(let row of data) {
             const newRow = rowTemplateStr
                         .replace('{{RANK}}', row.rank)
                         .replace('{{HANDLE}}', row.handle)
                         .replace('{{POINTS}}', row.points);
             
-            $('#leaderboard tbody').append(newRow);
+            tBody.append(newRow);
         }
+    }
+
+    $.getJSON('/api/leaderboard')
+    .then(data => {
+        fillTable($('#leaderboard #daily tbody'), data.dailyPoints);
+        fillTable($('#leaderboard #weekly tbody'), data.weeklyPoints);
     });
 });
