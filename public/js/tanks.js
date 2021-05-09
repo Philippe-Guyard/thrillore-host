@@ -104,6 +104,7 @@ class GameManager {
         this._clearCell(cellID);
         const { ctx, width, height } = this._getCtxFromID(cellID);
         ctx.drawImage(this.blueTankImage, 32 * xFrame, 32 * direction, 32, 32, 0, 0, width, height);
+
         return true;
     }
 

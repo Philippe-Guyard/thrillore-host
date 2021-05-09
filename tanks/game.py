@@ -1,5 +1,6 @@
 from random import randint
 
+#NOTE: This architecture is far from perfect, but I coded the entire game in a couple hours, so don't judge me
 
 class Tile:
     EMPTY = 0
@@ -48,6 +49,8 @@ class Game:
     SHOOT_LEFT = 7
     STAND_STILL = 8
 
+    MAX_TURNS = 80
+
     @staticmethod
     def get_random_coord():
         return randint(0, Game.GRID_SIDE - 1)
@@ -92,7 +95,9 @@ class Game:
         return self.grid[position[0]][position[1]]
 
     def _move(self, player, new_pos):
-        if 0 <= new_pos[0] < Game.GRID_SIDE and 0 <= new_pos[1] < Game.GRID_SIDE:
+        newpos_is_valid = 0 <= new_pos[0] < Game.GRID_SIDE and 0 <= new_pos[1] < Game.GRID_SIDE
+        #tanks cannot collid
+        if newpos_is_valid and self.at(player.position).state != Tile.TANK:
             self.at(player.position).set_state(Tile.EMPTY, self.turn)
             player.position = new_pos
             self.at(new_pos).set_state(Tile.TANK, self.turn, player)
@@ -118,6 +123,25 @@ class Game:
                 pos = (i, player.position[1])
                 self.at(pos).set_state(Tile.LASER, self.turn)
 
+    def _gen_killer_cloud(self):
+        #every 20 turns there is one layer
+        cloud_size = min(self.turn // 20, Game.GRID_SIDE // 2)
+        for i in range(Game.GRID_SIDE):
+            for j in range(cloud_size):
+                pos_left = (i, j)
+                self.at(pos_left).set_state(Tile.LASER, self.turn)
+
+                pos_right = (i, Game.GRID_SIDE - j - 1)
+                self.at(pos_right).set_state(Tile.LASER, self.turn)
+        
+        for i in range(cloud_size):
+            for j in range(Game.GRID_SIDE):
+                pos_up = (i, j)
+                self.at(pos_up).set_state(Tile.LASER, self.turn)
+
+                pos_bottom = (Game.GRID_SIDE - i - 1, j)
+                self.at(pos_bottom).set_state(Tile.LASER, self.turn)
+
     def play_turn(self):
         if self.game_ended:
             return
@@ -127,6 +151,7 @@ class Game:
         shoot_results = dict()
         for player in self.players:
             turn_result = player.play_turn(state_grid, player.position)
+
             self.action_map[turn_result](player)
             if turn_result == Game.SHOOT_RIGHT:
                 shoot_results[str(player)] = 'RIGHT'
@@ -144,6 +169,9 @@ class Game:
                 # this tile was a laser on the turn before the current one, hence it becomes empty
                 if tile.state == Tile.LASER and tile.last_update < self.turn:
                     tile.set_state(Tile.EMPTY, self.turn)
+
+        #generate the killer cloud now that we removed old lasers
+        self._gen_killer_cloud()
 
         # state grid for this turn (previous lasers are removed and new actions taken into account)
         state_grid = [[tile.state for tile in row]
@@ -170,5 +198,5 @@ class Game:
         self.shoot_history.append(shoot_results)
         self.alive_history.append([p.label for p in self.players])
 
-        self.game_ended = len(self.players) <= 1 or self.turn > 100
+        self.game_ended = len(self.players) <= 1 or self.turn > Game.MAX_TURNS
         self.turn += 1
