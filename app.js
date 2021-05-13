@@ -3,13 +3,6 @@
 const path = require('path');
 require('dotenv').config({path: path.join(__dirname, '.env')});
 
-const fs = require('fs');
-
-const rawdata = fs.readFileSync('points.json');
-const filePoints = JSON.parse(rawdata).map(x => {
-    return {handle: x.handle, points: Number.parseInt(x.points)}
-});
-
 const constants = require('./constants.js');
 
 const express = require('express');
