@@ -260,7 +260,6 @@ a.back-to-top:hover {
 .links-item {
   padding: 10px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.17);
-  -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 .links-item .links-text {
